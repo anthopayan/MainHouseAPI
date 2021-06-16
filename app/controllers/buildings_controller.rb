@@ -1,5 +1,5 @@
 class BuildingsController < ApplicationController
-  before_action :set_building, only: [:show, :update, :destroy]
+  before_action :set_building, only: [:show, :update, :destroy, :show_owner]
   
 
   # GET /buildings
@@ -12,6 +12,12 @@ class BuildingsController < ApplicationController
   # GET /buildings/1
   def show
     render json: @building
+  end
+
+  def show_owner
+    if (@building.agency_id == current_agency.id || @building.id == current_owner.building_id)
+      render json: @building, include: [:owners]
+    end
   end
 
   # POST /buildings

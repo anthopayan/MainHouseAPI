@@ -1,5 +1,5 @@
 class AgenciesController < ApplicationController
-  before_action :set_agency, only: [:show, :update, :show_owner, :destroy]
+  before_action :set_agency, only: [:show, :update, :show_owner, :show_event, :show_building, :destroy]
   before_action :authenticate_agency!, except: [:index]
 
   # GET /agencies
@@ -11,6 +11,10 @@ class AgenciesController < ApplicationController
 
   # GET /agencies/1
   def show
+      render json: @agency
+  end
+
+  def show_building
     if @agency.id == current_agency.id
       render json: @agency, include: [:buildings]
     end
@@ -19,6 +23,12 @@ class AgenciesController < ApplicationController
   def show_owner
     if @agency.id == current_agency.id
       render json: @agency, include: [:owners]
+    end
+  end
+
+  def show_event
+    if @agency.id == current_agency.id
+      render json: @agency, include: [:events]
     end
   end
 
