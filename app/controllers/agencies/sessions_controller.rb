@@ -4,7 +4,7 @@ class Agencies::SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, _opts = {})
-    render json: { message: 'You are logged in.' }, status: :ok
+  render json: { message: 'You are logged in.', agency: headers, token: resource, current_agency: current_agency }, status: :ok, "agency": :current_agency
   end
 
   def respond_to_on_destroy
