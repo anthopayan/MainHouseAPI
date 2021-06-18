@@ -15,9 +15,7 @@ class AgenciesController < ApplicationController
   end
 
   def show_building
-    if @agency.id == current_agency.id
-      render json: @agency, include: [:buildings]
-    end
+    render json: @agency, include: [:buildings]
   end
 
   def show_owner
