@@ -1,6 +1,5 @@
 class AgenciesController < ApplicationController
   before_action :set_agency, only: [:show, :update, :show_owner, :show_event, :show_building, :destroy]
-  before_action :authenticate_agency!, except: [:index]
 
   # GET /agencies
   def index
