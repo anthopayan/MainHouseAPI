@@ -19,6 +19,7 @@ devise_for :owners,
   get '/agency-events/:id', to: 'agencies#show_event'
   get '/building-owners/:id', to: 'buildings#show_owner'
   get '/building-events/:id', to: 'buildings#show_event'
+  post '/create-owner/', to: 'owners#create'
   
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
